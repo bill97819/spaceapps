@@ -1,10 +1,4 @@
 {
   "name": "spaceapps",
   "version": "1.0.0",
-  "description": "Space Apps 2017 Challenge",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Bill Jiang <bill97819@gmail.com>",
-  "license": "ISC"
 }
