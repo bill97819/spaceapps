@@ -1,23 +1,25 @@
 $(function () {
+    var getPoints = function () {
+        return [
+          new google.maps.LatLng(10, 10),
+          new google.maps.LatLng(10.00011, 10.100102),
+          new google.maps.LatLng(10.010210, 10.02301),
+          new google.maps.LatLng(10.03030213, 10.13030),
+       ];
+    };
+
     var map = new google.maps.Map(document.getElementById('map'), {
         center: {
-            lat: 43.4668000,
-            lng: -80.5163900
+            lat: 10,
+            lng: 10
         },
-        zoom: 14
+        zoom: 10
     });
+
     var heatmap = new google.maps.visualization.HeatmapLayer({
         data: getPoints(),
         map: map
-        
     });
-    function getPoints() {
-        return [
-          new google.maps.LatLng(43.4668000, -80.5163900),
-          new google.maps.LatLng(43.4668000, -80.5163900),
-          new google.maps.LatLng(43.4668000, -80.5163900),
-          new google.maps.LatLng(43.4668000, -80.5163900),
-          new google.maps.LatLng(43.4668000, -80.5163900),
-       ];
-    }
+
+    createCell(46.2074400905129,-72.99132727730068);
 });
