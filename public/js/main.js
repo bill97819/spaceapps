@@ -21,5 +21,14 @@ $(function () {
         map: map
     });
 
-    createCell(0.583299105614628,32.533299524864844);
+    createCell(37.8267,-100);
+    var recs = new Array(12);
+    
+    google.maps.event.addListener(map, 'idle', function() {
+        initGrid(map, recs)
+    });
+    
+    google.maps.event.addListener(map, 'bounds_changed', function() {
+       cleanupGrid(recs);
+    });
 });
