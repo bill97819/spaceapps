@@ -12,7 +12,6 @@ function GetCellColour(north, east, south, west) {
 
 function initGrid(map, recs) {
     
-        var cellColour = '#000000',
         mapBounds = map.getBounds(),
         neBounds = mapBounds.getNorthEast(),
         swBounds = mapBounds.getSouthWest(),
@@ -36,20 +35,25 @@ function initGrid(map, recs) {
         for (var i = 0; i < 4; i++) {
             for (var j = 0; j < 3; j++){
                 
-                var cellColour = PercentToColour(1);
+                var northBound = longs[j+1],
+                    southBound = longs[j],
+                    eastBound = lats[i+1],
+                    westBound = lats[i],
+                    colour = GetCellColour(northBound,eastBound,southBound,westBound);
+                
                 
                 recs[count] = new google.maps.Rectangle({
-                    strokeColor: cellColour,
+                    strokeColor: colour,
                     strokeOpacity: 0.5,
                     strokeWeight: 0,
-                    fillColor: cellColour,
+                    fillColor: colour,
                     fillOpacity: 0.5,
                     map: map,
                     bounds: {
-                        north: longs[j+1],
-                        south: longs[j],
-                        east: lats[i+1],
-                        west: lats[i]
+                        north: northBound,
+                        south: southBound,
+                        east: eastBound,
+                        west: westBound
                     }
                 });
                 count++;
