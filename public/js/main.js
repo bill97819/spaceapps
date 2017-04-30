@@ -10,8 +10,8 @@ $(function () {
 
     var map = new google.maps.Map(document.getElementById('map'), {
         center: {
-            lat: 10,
-            lng: 10
+            lat: 37.8267,
+            lng: -100
         },
         zoom: 10
     });
@@ -21,14 +21,13 @@ $(function () {
         map: map
     });
 
-    createCell(37.8267,-100);
     var recs = new Array(12);
-    
-    google.maps.event.addListener(map, 'idle', function() {
+
+    google.maps.event.addListener(map, 'idle', function () {
         initGrid(map, recs)
     });
-    
-    google.maps.event.addListener(map, 'bounds_changed', function() {
-       cleanupGrid(recs);
+
+    google.maps.event.addListener(map, 'bounds_changed', function () {
+        cleanupGrid(recs);
     });
 });

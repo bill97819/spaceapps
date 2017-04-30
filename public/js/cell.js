@@ -53,26 +53,21 @@ var getHex = function (risk) {
     return hex(r) + hex(g) + hex(b);
 };
 
-var createCell = function (lat, lng) {
+var createCell = function (lat, lng, callback) {
     //get data
     var isNearRiver = checkRiver(lat, lng);
     var isNearPeople = checkPeople(lat, lng);
-    var code;
     checkRain(lat, lng, function (result) {
         rainPercentage = result.currently.precipProbability.toFixed(2);
         var risk = parseFloat(isNearRiver) + parseFloat(isNearPeople) + parseFloat(rainPercentage);
+        colour = getHex(risk);
         console.log("Lat: " + lat);
         console.log("Lng: " + lng);
         console.log("Near river: " + isNearRiver);
         console.log("Near people: " + isNearPeople);
         console.log("Risk of rain: " + rainPercentage);
         console.log("Risk of flood: " + risk);
-        //return hex code
-        code = getHex(risk);
-        console.log(code);
-        return code;
-    }).done(function () {
-        console.log(code);
-        return code;
+        console.log("Colour: " + colour);
+        callback();
     });
 };
